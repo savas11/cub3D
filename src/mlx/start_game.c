@@ -31,7 +31,7 @@ void	print_c_rgb(t_data *data)
 }
 //alt zemin basmak icin
 
-void	sprint_f_rgb(t_data *data)
+void	print_f_rgb(t_data *data)
 {
 	int		x;
 	int		y;
