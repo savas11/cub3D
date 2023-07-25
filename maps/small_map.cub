@@ -1,0 +1,11 @@
+NO ./img/n_wall.xpm
+SO ./img/colorstone.xpm
+WE ./img/eagle.xpm
+EA ./img/w_wall.xpm
+
+F 1,2,3
+C 4,5,255
+
+        1111111111111111111111111
+        1000000000110000W000000001
+111111111111111111111111111111111
