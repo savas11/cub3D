@@ -98,7 +98,7 @@ int	before_start_game(int fd, t_data *data)
 	buff = (char *)malloc(sizeof(char) * 2);
 	buff[1] = '\0';
 	arr = (char *)malloc(sizeof(char) * 2);
-	arr[1] = '\0';
+	arr[0] = '\0';
 	while (read(fd, buff, 1))
 	{
 		temp = ft_strjoin(arr, buff);

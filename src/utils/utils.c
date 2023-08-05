@@ -76,7 +76,6 @@ int	print_error(char *str)
 int	check_arg(char *str)
 {
 	int		last_index;
-
 	last_index = ft_strlen(str) - 1;
 	if (str[last_index] != 'b')
 		return (1);

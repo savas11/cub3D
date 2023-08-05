@@ -13,7 +13,8 @@
 #include "../cub3d.h"
 
 //tum duvarlar olustuktan sonra xpmlerin yonlere gore 
-//basilmasini ayarlayan fonksiyon
+//basilmasini ayarlayan fonksiyon 
+// texurlari oranlayarak yerlestirir
 
 void	print_map5(t_data *data, int x)
 {

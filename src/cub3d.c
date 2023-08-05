@@ -24,5 +24,6 @@ int	main(int argc, char **argv)
 		return (ft_free_map(&data));
 	if (start_game(&data))
 		return (ft_free_map(&data));
+	
 	return (0);
 }
