@@ -71,23 +71,63 @@ int	put_image(t_data *data)
 	return (0);
 }
 
-int	key_press(int key, t_data *data)
+int	update(t_data *data)
 {
-	key_press_helper(data, key);
-	key_press_helper2(data, key);
-	key_press_helper3(data, key);
-	if (key == ESC)
-		ft_exit(data);
+	if (data->keys.key_a == false && data->keys.key_w == false
+		&& data->keys.key_d == false && data->keys.key_s == false
+		&& data->keys.rarrow == false && data->keys.larrow == false)
+	{
+		return (1);
+	}
+	key_press_helper(data);
+	key_press_helper2(data);
+	key_press_helper3(data);
 	print_c_rgb(data);
 	print_f_rgb(data);
 	print_map(data);
 	return (0);
 }
 
+int	key_press(int key, t_data *data)
+{
+	if (key == BACK)
+		data->keys.key_s = true;
+	if (key == UP)
+		data->keys.key_w = true;
+	if (key == RIGHT)
+		data->keys.key_a = true;
+	if (key == LEFT)
+		data->keys.key_d = true;
+	if (key == CAMERA_LEFT)
+		data->keys.larrow = true;
+	if (key == CAMERA_RIGHT)
+		data->keys.rarrow = true;
+	if (key == ESC)
+		ft_exit(data);
+	return (0);
+}
+
+int	key_release(int key, t_data *data)
+{
+	if (key == BACK)
+		data->keys.key_s = false;
+	if (key == UP)
+		data->keys.key_w = false;
+	if (key == RIGHT)
+		data->keys.key_a = false;
+	if (key == LEFT)
+		data->keys.key_d = false;
+	if (key == CAMERA_LEFT)
+		data->keys.larrow = false;
+	if (key == CAMERA_RIGHT)
+		data->keys.rarrow = false;
+	return (0);
+}
+
 int	start_game(t_data *data)
 {
-	data->move_speed = 0.2;
-	data->rot_speed = 0.2;
+	data->move_speed = 0.1;
+	data->rot_speed = 0.04;
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_WIDTH, \
 	WIN_HEIGHT, "Cub3D");
@@ -103,6 +143,8 @@ int	start_game(t_data *data)
 	print_f_rgb(data);
 	print_map(data);
 	mlx_hook(data->win_ptr, 2, 1L << 0, &key_press, data);
+	mlx_hook(data->win_ptr, 3, 1L << 0, &key_release, data);
+	mlx_loop_hook(data->mlx_ptr, &update, data);
 	mlx_hook(data->win_ptr, 17, 0, (void *)ft_exit, data);
 	mlx_loop(data->mlx_ptr);
 	return (0);

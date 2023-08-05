@@ -21,6 +21,7 @@
 # include "../inc/libft/libft.h"
 //# include "../inc/minilibx_linux/mlx.h"
 # include "../inc/minilibx_macos/mlx.h"
+# include <stdbool.h>
 
 # define WIN_WIDTH 1500
 # define WIN_HEIGHT 850
@@ -34,6 +35,16 @@
 # define CAMERA_RIGHT 123	//Macos: 123 - 65361
 # define CAMERA_LEFT 124	//Macos: 124 - 65363
 # define ESC 53		//Macos: 53 - 65307
+
+typedef struct s_keys
+{
+	bool key_w;
+	bool key_a;
+	bool key_s;
+	bool key_d;
+	bool rarrow;
+	bool larrow;
+} t_keys;
 
 typedef struct t_data
 {
@@ -90,7 +101,8 @@ typedef struct t_data
 	double	wall_x;
 	double	side_dist_x;
 	double	side_dist_y;
-}				t_data;
+	t_keys keys;
+} t_data;
 
 int		**copy_int_array(int **array, int size);
 int		before_start_game(int fd, t_data *data);
@@ -114,9 +126,9 @@ void	int_map_helper(t_data *data, int i, int x, int y);
 void	ft_free_helper(t_data *data);
 void	free_int_array(int **array, int map_size);
 void	set_data_rc(t_data *data, int x);
-void	key_press_helper(t_data *data, int key);
-void	key_press_helper2(t_data *data, int key);
-void	key_press_helper3(t_data *data, int key);
+void	key_press_helper(t_data *data);
+void	key_press_helper2(t_data *data);
+void	key_press_helper3(t_data *data);
 void	ft_exit(t_data *data);
 
 #endif

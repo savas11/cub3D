@@ -4,7 +4,7 @@ WHITE	=\033[0;37m
 YELLOW	=\033[0;33m
 
 NAME		= cub3D
-CC			= gcc
+CC			= gcc -g
 RM			= rm -rf
 CFLAGS		= -Wall -Wextra
 MLX_FLAGS_MACOS		= -framework OpenGL -framework AppKit

@@ -24,19 +24,19 @@ void	set_data_rc(t_data *data, int x)
 {
 	double	camera_x;
 
-	camera_x = 2 * x / (double)WIN_WIDTH -1;
+	camera_x = 2 * x / (double)WIN_WIDTH -1; // gelen x degerine gore -1 ile +1 arasinda deger verir
 	data->raydir_x = data->dir_x + data->plane_x * camera_x;
 	data->raydir_y = data->dir_y + data->plane_y * camera_x;
 	data->map_x = (int)data->pos_x;
 	data->map_y = (int)data->pos_y;
-	data->delta_dist_x = fabs(1 / data->raydir_x);
+	data->delta_dist_x = fabs(1 / data->raydir_x); // egimi bulur
 	data->delta_dist_y = fabs(1 / data->raydir_y);
 	data->hit = 0;
 }
 
-void	key_press_helper3(t_data *data, int key)
+void	key_press_helper3(t_data *data)
 {
-	if (key == RIGHT)
+	if (data->keys.key_a == true)
 	{
 		if (data->map3[(int)data->pos_x][(int)(data->pos_y \
 			- (data->dir_x * data->move_speed))] != 1)
@@ -45,7 +45,7 @@ void	key_press_helper3(t_data *data, int key)
 			* data->move_speed))][(int)data->pos_y] != 1)
 			data->pos_x += data->dir_y * data->move_speed;
 	}
-	if (key == LEFT)
+	if (data->keys.key_d == true)
 	{
 		if (data->map3[(int)(data->pos_x)][(int)(data->pos_y \
 			+ (data->dir_x * data->move_speed))] != 1)
@@ -56,12 +56,12 @@ void	key_press_helper3(t_data *data, int key)
 	}
 }
 
-void	key_press_helper2(t_data *data, int key)
+void	key_press_helper2(t_data *data)
 {
 	double	olddir_x;
 	double	oldplane_x;
 
-	if (key == UP)
+	if (data->keys.key_w == true)
 	{
 		if (data->map3[(int)(data->pos_x + data->dir_x \
 			* data->move_speed)][(int)(data->pos_y)] != 1)
@@ -70,7 +70,7 @@ void	key_press_helper2(t_data *data, int key)
 			+ data->dir_y * data->move_speed)] != 1)
 			data->pos_y += data->dir_y * data->move_speed;
 	}
-	if (key == CAMERA_RIGHT)
+	if (data->keys.rarrow == true)
 	{
 		olddir_x = data->dir_x;
 		data->dir_x = data->dir_x * cos(-data->rot_speed) \
@@ -85,12 +85,12 @@ void	key_press_helper2(t_data *data, int key)
 	}
 }
 
-void	key_press_helper(t_data *data, int key)
+void	key_press_helper(t_data *data)
 {
 	double	olddir_x;
 	double	oldplane_x;
 
-	if (key == BACK)
+	if (data->keys.key_s == true)
 	{
 		if (data->map3[(int)(data->pos_x - data->dir_x \
 			* data->move_speed)][(int)(data->pos_y)] != 1)
@@ -99,7 +99,7 @@ void	key_press_helper(t_data *data, int key)
 			- data->dir_y * data->move_speed)] != 1)
 			data->pos_y -= data->dir_y * data->move_speed;
 	}
-	if (key == CAMERA_LEFT)
+	if (data->keys.larrow == true)
 	{
 		olddir_x = data->dir_x;
 		data->dir_x = data->dir_x * cos(data->rot_speed) \

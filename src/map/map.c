@@ -87,6 +87,12 @@ void	init_values(t_data *data)
 	data->c_bool = 0;
 	data->imgs = (char **)malloc(sizeof(char *) * 7);
 	data->imgs[6] = "\0";
+	data->keys.key_a = false;
+	data->keys.key_w = false;
+	data->keys.key_s = false;
+	data->keys.key_d = false;
+	data->keys.rarrow = false;
+	data->keys.larrow = false;
 }
 
 int	before_start_game(int fd, t_data *data)

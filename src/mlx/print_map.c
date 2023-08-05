@@ -63,13 +63,9 @@ void	print_map4(t_data *data)
 			* data->raydir_x;
 	data->wall_x -= floor(data->wall_x);
 	data->tex_x = (int)(data->wall_x * (double)IMG_WIDTH);
-	if (data->side == 0 && data->raydir_x > 0)
-		data->tex_x = IMG_WIDTH - data->tex_x - 1;
-	if (data->side == 1 && data->raydir_y < 0)
-		data->tex_x = IMG_WIDTH - data->tex_x - 1;
 	data->step = 1.0 * IMG_HEIGHT / data->line_height;
 	data->tex_pos = (data->draw_start - WIN_HEIGHT / 2 \
-		+ data->line_height / 2) * data->step;
+		+ data->line_height / 2) * data->step; // duvara yakin girersen degeri arttiriyor duvarin ortasindan cizmeye basliyor.
 }
 
 //isinin sag ve solundaki kisimlari dogru getirmesi icin yapilan bir fonksiyon
