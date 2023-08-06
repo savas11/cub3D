@@ -18,18 +18,18 @@
 //yedinci adımda ışın adımlarının uzunluklarını hesaplayarak 
 //ve son adımda da çarpışma bayrağını sıfırlayarak, 
 //raycasting işlemi için gerekli verileri hazırlar.
-//!!!fabs mutlak deger fonksiyonudur
-
+//!!!fabs mutlak deger fonksiyonudur o fonsiyonda egimi buluruz
+// camera_x gelen x degerine gore -1 ile +1 arasinda deger verir
 void	set_data_rc(t_data *data, int x)
 {
 	double	camera_x;
 
-	camera_x = 2 * x / (double)WIN_WIDTH -1; // gelen x degerine gore -1 ile +1 arasinda deger verir
+	camera_x = 2 * x / (double)WIN_WIDTH -1;
 	data->raydir_x = data->dir_x + data->plane_x * camera_x;
 	data->raydir_y = data->dir_y + data->plane_y * camera_x;
 	data->map_x = (int)data->pos_x;
 	data->map_y = (int)data->pos_y;
-	data->delta_dist_x = fabs(1 / data->raydir_x); // egimi bulur
+	data->delta_dist_x = fabs(1 / data->raydir_x);
 	data->delta_dist_y = fabs(1 / data->raydir_y);
 	data->hit = 0;
 }

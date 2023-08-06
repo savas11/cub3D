@@ -65,9 +65,10 @@ void	print_map4(t_data *data)
 	data->tex_x = (int)(data->wall_x * (double)IMG_WIDTH);
 	data->step = 1.0 * IMG_HEIGHT / data->line_height;
 	data->tex_pos = (data->draw_start - WIN_HEIGHT / 2 \
-		+ data->line_height / 2) * data->step; // duvara yakin girersen degeri arttiriyor duvarin ortasindan cizmeye basliyor.
+		+ data->line_height / 2) * data->step;
 }
-
+// data->text_pos duvara yakin girersen degeri arttiriyor
+//duvarin ortasindan cizmeye basliyor.
 //isinin sag ve solundaki kisimlari dogru getirmesi icin yapilan bir fonksiyon
 
 void	print_map3(t_data *data)
